@@ -1,0 +1,27 @@
+###   Add a student's data
+POST  http://localhost:8083/api/student HTTP/1.1
+content-type: application/json
+
+{
+    "studentId": "1021",
+    "studentName": "John Doe",
+    "studentData": "Data of John Doe"   
+}
+
+###  Book an appointment
+POST  http://localhost:8084/api/appointment HTTP/1.1
+content-type: application/json
+
+{
+    "appointmentid": "00001",
+    "studentId": "1021",
+    "studentName": "John Doe",
+    "teacherId": "001",   
+    "date": "20-5-2025:12:00"
+}
+
+
+###  Get  appointments + student data
+http://localhost:8085/api/appointment
+
+
