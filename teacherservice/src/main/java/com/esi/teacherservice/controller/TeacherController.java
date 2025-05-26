@@ -18,11 +18,9 @@ public class TeacherController {
     private TeacherService teacherService;
 
     // Task 4
-    /*
-     * @GetMapping("/appointment")
-     * public List<AppointmentDto> getAllAppointments() {
-     * return teacherService.getAllAppointments();
-     * }
-     */
+     @GetMapping("/appointment")
+     public List<AppointmentDto> getAllAppointments() {
+     return teacherService.getAllAppointments();
+     }
 
 }

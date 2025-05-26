@@ -23,4 +23,14 @@ public class StudentService {
         studentRepository.save(student);
     }
 
+    public StudentDto fetchStudentData(String id) {
+        Student student = studentRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Student not found with id: " + id));
+        
+        return StudentDto.builder()
+                .studentId(student.getStudentId())
+                .studentName(student.getStudentName())
+                .studentData(student.getStudentData())
+                .build();
+    }
 }
