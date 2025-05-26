@@ -22,3 +22,44 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+
+  student-db:
+    image: postgres:15
+    container_name: student-db
+    environment:
+      POSTGRES_DB: studentservice_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
+    volumes:
+      - student-db-data:/var/lib/postgresql/data
+
+  appointment-db:
+    image: postgres:15
+    container_name: appointment-db
+    environment:
+      POSTGRES_DB: appointmentservice_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5434:5432"
+    volumes:
+      - appointment-db-data:/var/lib/postgresql/data
+
+  teacher-db:
+    image: postgres:15
+    container_name: teacher-db
+    environment:
+      POSTGRES_DB: teacherservice_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5435:5432"
+    volumes:
+      - teacher-db-data:/var/lib/postgresql/data
+
+volumes:
+  student-db-data:
+  appointment-db-data:
+  teacher-db-data:
