@@ -34,13 +34,8 @@ public class StudentController {
 
     @GetMapping("/student/{id}")
     public ResponseEntity<StudentDto> fetchStudentData(@PathVariable String id) {
-        try {
-            StudentDto studentDto = studentService.fetchStudentData(id);
-            return ResponseEntity.ok(studentDto);
-        } catch (RuntimeException e) {
-            log.error("Error in fetchStudentData: {}", e.getMessage());
-            return ResponseEntity.internalServerError().build();
-        }
+        StudentDto studentDto = studentService.fetchStudentData(id);
+        return ResponseEntity.ok(studentDto);
     }
 
 }

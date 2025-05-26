@@ -25,22 +25,17 @@ public class StudentService {
 
     public StudentDto fetchStudentData(String id) {
         log.info("Fetching student data for id: {}", id);
-        try {
-            Student student = studentRepository.findById(id)
-                    .orElseThrow(() -> {
-                        log.error("Student not found with id: {}", id);
-                        return new RuntimeException("Student not found with id: " + id);
-                    });
-            
-            log.info("Found student: {}", student);
-            return StudentDto.builder()
-                    .studentId(student.getStudentId())
-                    .studentName(student.getStudentName())
-                    .studentData(student.getStudentData())
-                    .build();
-        } catch (Exception e) {
-            log.error("Error fetching student data: {}", e.getMessage(), e);
-            throw e;
-        }
+        Student student = studentRepository.findById(id)
+                .orElseThrow(() -> {
+                    log.error("Student not found with id: {}", id);
+                    return new RuntimeException("Student not found with id: " + id);
+                });
+        
+        log.info("Found student: {}", student);
+        return StudentDto.builder()
+                .studentId(student.getStudentId())
+                .studentName(student.getStudentName())
+                .studentData(student.getStudentData())
+                .build();
     }
 }
